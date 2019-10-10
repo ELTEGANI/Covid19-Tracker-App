@@ -23,10 +23,10 @@
 
         <item name="scrimBackground">@color/covid19_black_900_alpha_087</item>
         <item name="android:statusBarColor">@color/covid19_black_900_alpha_060</item>
-
         <item name="elevationOverlayEnabled">true</item>
-
         <!--System/Platform attributes-->
         <item name="android:windowLightStatusBar" tools:ignore="NewApi">false</item>
+
+
     </style>
 </resources>

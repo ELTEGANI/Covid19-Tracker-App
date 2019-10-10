@@ -1,6 +1,5 @@
 package com.nanotechnology.covid_19statistic.di
 
-import android.app.Application
 import android.content.Context
 import com.nanotechnology.covid_19statistic.ui.StatisticFragment
 import dagger.BindsInstance

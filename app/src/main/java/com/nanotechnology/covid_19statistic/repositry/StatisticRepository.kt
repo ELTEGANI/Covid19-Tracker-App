@@ -1,6 +1,7 @@
 package com.nanotechnology.covid_19statistic.repositry
 
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MediatorLiveData
 import com.nanotechnology.covid_19statistic.AppExecutors
 import com.nanotechnology.covid_19statistic.api.ApiResponse
 import com.nanotechnology.covid_19statistic.api.ApiSuccessResponse
@@ -40,7 +41,14 @@ class StatisticRepository @Inject constructor(
       }.asLiveData()
    }
 
-  fun loadDeathsAndUpdatedTime():LiveData<List<Statistic>>{
-     return  statisticDao.loadLastFiveDeaths()
+  fun loadDeathsAndUpdatedTime():LiveData<Resource<List<Statistic>>>{
+     val data = MediatorLiveData<Resource<List<Statistic>>>()
+     data.value = Resource.loading(null)
+     data.addSource(statisticDao.loadLastFiveDeaths()){
+        if(it != null){
+           data.value = Resource.success(it)
+        }
+     }
+     return  data
   }
 }

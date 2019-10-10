@@ -4,7 +4,6 @@ import android.annotation.SuppressLint
 import android.view.View
 import android.view.ViewGroup
 import android.view.WindowInsets
-import androidx.core.view.updateLayoutParams
 import androidx.databinding.BindingAdapter
 import java.text.SimpleDateFormat
 
@@ -74,46 +73,6 @@ fun View.applySystemWindowInsetsPadding(
     }
 }
 
-@BindingAdapter(
-    "marginLeftSystemWindowInsets",
-    "marginTopSystemWindowInsets",
-    "marginRightSystemWindowInsets",
-    "marginBottomSystemWindowInsets",
-    requireAll = false
-)
-fun View.applySystemWindowInsetsMargin(
-    previousApplyLeft: Boolean,
-    previousApplyTop: Boolean,
-    previousApplyRight: Boolean,
-    previousApplyBottom: Boolean,
-    applyLeft: Boolean,
-    applyTop: Boolean,
-    applyRight: Boolean,
-    applyBottom: Boolean
-) {
-    if (previousApplyLeft == applyLeft &&
-        previousApplyTop == applyTop &&
-        previousApplyRight == applyRight &&
-        previousApplyBottom == applyBottom
-    ) {
-        return
-    }
-
-    doOnApplyWindowInsets { view, insets, _, margin, _ ->
-        val left = if (applyLeft) insets.systemWindowInsetLeft else 0
-        val top = if (applyTop) insets.systemWindowInsetTop else 0
-        val right = if (applyRight) insets.systemWindowInsetRight else 0
-        val bottom = if (applyBottom) insets.systemWindowInsetBottom else 0
-
-        view.updateLayoutParams<ViewGroup.MarginLayoutParams> {
-            leftMargin = margin.left + left
-            topMargin = margin.top + top
-            rightMargin = margin.right + right
-            bottomMargin = margin.bottom + bottom
-        }
-    }
-}
-
 fun View.doOnApplyWindowInsets(
     block: (View, WindowInsets, InitialPadding, InitialMargin, Int) -> Unit
 ) {
@@ -134,7 +93,7 @@ fun View.doOnApplyWindowInsets(
 
 class InitialPadding(val left: Int, val top: Int, val right: Int, val bottom: Int)
 
-class InitialMargin(val left: Int, val top: Int, val right: Int, val bottom: Int)
+class InitialMargin
 
 private fun recordInitialPaddingForView(view: View) = InitialPadding(
     view.paddingLeft, view.paddingTop, view.paddingRight, view.paddingBottom
@@ -143,7 +102,7 @@ private fun recordInitialPaddingForView(view: View) = InitialPadding(
 private fun recordInitialMarginForView(view: View): InitialMargin {
     val lp = view.layoutParams as? ViewGroup.MarginLayoutParams
         ?: throw IllegalArgumentException("Invalid view layout params")
-    return InitialMargin(lp.leftMargin, lp.topMargin, lp.rightMargin, lp.bottomMargin)
+    return InitialMargin()
 }
 
 private fun recordInitialHeightForView(view: View): Int {

@@ -22,7 +22,6 @@ it loads all the data from this [NovelCOVID](https://github.com/NovelCOVID/API) 
 - [Retrofit](https://square.github.io/retrofit/).
 - [JSON Converter]().
 - [MPAndroidChart]().
-- [Okhttp3]().
 - [Dagger 2]().
 - [Material Components for Android](https://github.com/material-components/material-components-android)
 

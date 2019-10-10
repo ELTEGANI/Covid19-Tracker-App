@@ -3,9 +3,16 @@
     <string name="share_statistics">Share Statistics</string>
     <string name="chart">Statistic By Chart</string>
     <string name="dark_mode">Dark Mode</string>
-    <string name="active_cases">Active Cases</string>
     <string name="cases">Cases Confirmed</string>
     <string name="deaths">Deaths</string>
     <string name="recovery">Recovery</string>
     <string name="advices">Please wash your hands frequently,avoid touching your(eyes,mouth and nose)also try to cover them and avoid crowded places.Lastly stay home stay save:)</string>
+    <string name="update_in">Updated In</string>
+    <string name="cases_confirmed">Cases Confirmed:</string>
+    <string name="recovery_cases">Recovery:</string>
+    <string name="deaths_cases">Deaths:</string>
+    <string name="statistics_deaths_per_time">Statistics Deaths Per Time</string>
+    <string name="recovery_image_view">recovery_image_view</string>
+    <string name="cases_image_view">cases_image_view</string>
+    <string name="deaths_image_view">deaths_image_view</string>
 </resources>
