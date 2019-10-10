@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="ShapeAppearance.Covid.MediumComponent" parent="ShapeAppearance.MaterialComponents.MediumComponent">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">@dimen/covid_medium_component_corner_radius</item>
+    </style>
+    <dimen name="covid_medium_component_corner_radius">12dp</dimen>
+
+</resources>
