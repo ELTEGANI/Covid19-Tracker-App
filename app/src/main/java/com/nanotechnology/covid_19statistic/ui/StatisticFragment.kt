@@ -1,22 +1,44 @@
 package com.nanotechnology.covid_19statistic.ui
 
-import androidx.lifecycle.ViewModelProviders
+import android.content.Context
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-
+import android.widget.Toast
+import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
+import com.nanotechnology.covid_19statistic.MyApplication
 import com.nanotechnology.covid_19statistic.R
+import com.nanotechnology.covid_19statistic.databinding.StatisticFragmentBinding
+import javax.inject.Inject
+
 
 class StatisticFragment : Fragment() {
 
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.statistic_fragment, container, false)
+    @Inject
+    lateinit var statisticViewModel: StatisticViewModel
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        (activity!!.applicationContext as MyApplication).appComponent.inject(this)
+
+    }
+    lateinit var binding: StatisticFragmentBinding
+
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        binding = DataBindingUtil.inflate(inflater,R.layout.statistic_fragment,container,false)
+
+        binding.lifecycleOwner = this.viewLifecycleOwner
+
+        binding.statisticResult = statisticViewModel.statistic
+
+         statisticViewModel.statistic.observe(viewLifecycleOwner, Observer {
+            Toast.makeText(context,it.data.toString(),Toast.LENGTH_LONG).show()
+         })
+        return binding.root
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {

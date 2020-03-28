@@ -7,5 +7,5 @@ import retrofit2.http.GET
 
 interface Covid19Service {
     @GET("/all")
-    fun getGlobalStatistic():LiveData<Statistic>
+    fun getGlobalStatistic():LiveData<ApiResponse<Statistic>>
 }
