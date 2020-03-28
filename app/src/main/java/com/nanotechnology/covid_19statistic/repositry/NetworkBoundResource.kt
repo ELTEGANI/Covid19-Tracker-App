@@ -1,5 +1,6 @@
 package com.nanotechnology.covid_19statistic.repositry
 
+import android.util.Log
 import androidx.annotation.MainThread
 import androidx.annotation.WorkerThread
 import androidx.lifecycle.LiveData
@@ -17,6 +18,7 @@ import com.nanotechnology.covid_19statistic.vo.Resource
 abstract class NetworkBoundResource<ResultType, RequestType>@MainThread constructor(private val appExecutors: AppExecutors) {
 
     private val result = MediatorLiveData<Resource<ResultType>>()
+
 
     init {
         result.value = Resource.loading(null)
