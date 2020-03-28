@@ -13,6 +13,6 @@ interface StatisticDao {
   @Insert(onConflict = OnConflictStrategy.REPLACE)
   fun insert(statistic: Statistic)
 
-  @Query("SELECT * FROM Statistic")
+  @Query("SELECT * FROM Statistic ORDER BY cases DESC LIMIT 1")
   fun loadStatistic(): LiveData<Statistic>
 }

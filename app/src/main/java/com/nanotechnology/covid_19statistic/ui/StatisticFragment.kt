@@ -1,5 +1,6 @@
 package com.nanotechnology.covid_19statistic.ui
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -28,6 +29,7 @@ class StatisticFragment : Fragment() {
     }
     lateinit var binding: StatisticFragmentBinding
 
+    @SuppressLint("SetTextI18n")
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = DataBindingUtil.inflate(inflater,R.layout.statistic_fragment,container,false)
 
@@ -36,7 +38,9 @@ class StatisticFragment : Fragment() {
         binding.statisticResult = statisticViewModel.statistic
 
          statisticViewModel.statistic.observe(viewLifecycleOwner, Observer {
-            Toast.makeText(context,it.data.toString(),Toast.LENGTH_LONG).show()
+             binding.textViewCases.text = "Cases"+it.data?.cases.toString()
+             binding.textViewDeaths.text = "Death"+it.data?.deaths.toString()
+             binding.textViewCovered.text = "Recovered"+it.data?.recovered.toString()
          })
         return binding.root
     }
