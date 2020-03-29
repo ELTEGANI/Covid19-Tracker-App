@@ -3,9 +3,7 @@ package com.nanotechnology.covid_19statistic.ui
 import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
@@ -41,8 +39,28 @@ class StatisticFragment : Fragment() {
              binding.textViewCases.text = "Cases"+it.data?.cases.toString()
              binding.textViewDeaths.text = "Death"+it.data?.deaths.toString()
              binding.textViewCovered.text = "Recovered"+it.data?.recovered.toString()
+             binding.textViewActiveCases.text = "Active Cases"+it.data?.recovered.toString()
          })
+        setHasOptionsMenu(true)
         return binding.root
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem) =
+        when (item.itemId) {
+            R.id.menu_dark_mode -> {
+                true
+            }
+            R.id.menu_share_statistic -> {
+                true
+            }
+            R.id.menu_statistic -> {
+                true
+            }
+            else -> false
+        }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.statistic_menu, menu)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
