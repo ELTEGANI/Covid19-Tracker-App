@@ -44,8 +44,8 @@ class StatisticFragment : Fragment() {
                      it1
                  )
              }
+
          })
-        setHasOptionsMenu(true)
         return binding.root
     }
 
@@ -69,6 +69,7 @@ class StatisticFragment : Fragment() {
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.statistic_menu, menu)
     }
+
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
