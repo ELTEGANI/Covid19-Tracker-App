@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">COVID-19 Tracker</string>
+    <string name="share_statistics">Share Statistics</string>
+    <string name="chart">Chart</string>
+    <string name="dark_mode">Dark Mode</string>
+    <string name="by_country">Statistic By Country</string>
+    <string name="active_cases">Active Cases</string>
+    <string name="cases">Cases</string>
+    <string name="deaths">Deaths</string>
+    <string name="recovery">Recovery</string>
+    <string name="advices">Please wash your hands frequently,avoid touching your(eyes,mouth and nose)also try to cover them and avoid crowded places.Lastly stay home :)</string>
 </resources>
