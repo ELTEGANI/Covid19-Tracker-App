@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="TextAppearance.Covid.Headline5" parent="TextAppearance.MaterialComponents.Headline5">
+        <item name="fontFamily">@font/work_sans_bold</item>
+        <item name="android:textColor">@color/color_on_primary_surface_emphasis_high</item>
+    </style>
+
+    <style name="TextAppearance.Covid.Headline4" parent="TextAppearance.MaterialComponents.Headline4">
+        <item name="fontFamily">@font/eczar_bold</item>
+        <item name="android:textColor">@color/color_on_primary_surface_emphasis_high</item>
+    </style>
+    <style name="TextAppearance.Covid.Body1" parent="TextAppearance.MaterialComponents.Body1">
+        <item name="fontFamily">@font/work_sans_bold</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/color_on_primary_surface_emphasis_high</item>
+        <item name="lineHeight">24sp</item>
+    </style>
+</resources>

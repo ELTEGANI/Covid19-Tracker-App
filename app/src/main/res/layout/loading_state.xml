@@ -34,17 +34,17 @@
         android:orientation="vertical"
         app:visibleGone="@{resource.data == null}"
         android:layout_width="wrap_content"
-        android:gravity="center"
+        android:gravity="top"
         android:padding="8dp"
         android:layout_height="wrap_content">
 
         <ProgressBar
             app:visibleGone="@{resource.status == Status.LOADING}"
-            style="?android:attr/progressBarStyle"
-            android:layout_width="wrap_content"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/progress_bar"
-            android:layout_margin="8dp" />
+            android:indeterminate="true"
+            android:id="@+id/progress_bar"/>
 
     </LinearLayout>
 </layout>

@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-
+    <item
+        android:id="@+id/menu_statistic_by_country"
+        android:title="@string/by_country"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/menu_chart"
+        android:title="@string/chart"
+        app:showAsAction="never" />
     <item
         android:id="@+id/menu_share_statistic"
         android:title="@string/share_statistics"
@@ -10,14 +17,6 @@
         android:id="@+id/menu_dark_mode"
         android:title="@string/dark_mode"
         app:showAsAction="never" />
-    <item
-        android:id="@+id/menu_statistic"
-        android:icon="@drawable/ic_chart"
-        android:title="@string/statistic"
-        app:showAsAction="ifRoom" />
-    <item
-        android:id="@+id/menu_location"
-        android:icon="@drawable/ic_earth"
-        android:title="@string/location"
-        app:showAsAction="ifRoom" />
+
+
 </menu>
