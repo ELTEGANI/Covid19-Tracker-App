@@ -33,6 +33,7 @@
         <!--Typography-->
         <item name="textAppearanceHeadline5">@style/TextAppearance.Covid.Headline5</item>
         <item name="textAppearanceHeadline4">@style/TextAppearance.Covid.Headline4</item>
+        <item name="textAppearanceBody1">@style/TextAppearance.Covid.Body1</item>
 
 
     </style>
