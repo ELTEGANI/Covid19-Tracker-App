@@ -12,5 +12,6 @@
     <item
         android:id="@+id/menu_dark_mode"
         android:title="@string/dark_mode"
-        app:showAsAction="never" />
+        android:icon="@drawable/ic_moon"
+        app:showAsAction="always"/>
 </menu>

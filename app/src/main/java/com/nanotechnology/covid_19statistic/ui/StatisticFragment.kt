@@ -3,8 +3,10 @@ package com.nanotechnology.covid_19statistic.ui
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
+import android.content.res.Configuration
 import android.os.Bundle
 import android.view.*
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
@@ -62,8 +64,18 @@ class StatisticFragment : Fragment() {
     override fun onOptionsItemSelected(item: MenuItem) =
         when (item.itemId) {
             R.id.menu_dark_mode -> {
+                // Get new mode.
+                val mode = if ((resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK) ==
+                             Configuration.UI_MODE_NIGHT_NO) {
+                    AppCompatDelegate.MODE_NIGHT_YES
+                } else {
+                    AppCompatDelegate.MODE_NIGHT_AUTO_BATTERY
+                }
+                // Change UI Mode
+                AppCompatDelegate.setDefaultNightMode(mode)
                 true
             }
+
             R.id.menu_share_statistic -> {
                 val sendIntent: Intent = Intent().apply {
                     action = Intent.ACTION_SEND
@@ -78,10 +90,12 @@ class StatisticFragment : Fragment() {
                 startActivity(shareIntent)
                 true
             }
+
             R.id.menu_chart -> {
                 openDialogChart()
                 true
             }
+
             else -> false
         }
 
@@ -120,5 +134,4 @@ class StatisticFragment : Fragment() {
         })
         dialog?.show()
     }
-
 }
