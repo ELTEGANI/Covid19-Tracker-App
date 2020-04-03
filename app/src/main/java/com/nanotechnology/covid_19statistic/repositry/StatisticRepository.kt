@@ -40,5 +40,7 @@ class StatisticRepository @Inject constructor(
       }.asLiveData()
    }
 
-
+  fun loadDeathsAndUpdatedTime():LiveData<List<Statistic>>{
+     return  statisticDao.loadLastFiveDeaths()
+  }
 }

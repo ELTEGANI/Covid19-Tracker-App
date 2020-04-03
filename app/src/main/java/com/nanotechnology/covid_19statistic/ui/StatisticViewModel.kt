@@ -13,6 +13,6 @@ class StatisticViewModel @Inject constructor(statisticRepository: StatisticRepos
 
     val statistic : LiveData<Resource<Statistic>>  = statisticRepository.retrieveAllStatistics()
 
-
+    val deathsAndUpdated : LiveData<List<Statistic>> = statisticRepository.loadDeathsAndUpdatedTime()
 
 }

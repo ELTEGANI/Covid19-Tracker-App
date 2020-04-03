@@ -15,4 +15,7 @@ interface StatisticDao {
 
   @Query("SELECT * FROM Statistic ORDER BY cases DESC LIMIT 1")
   fun loadStatistic(): LiveData<Statistic>
+
+  @Query("SELECT * from Statistic ORDER BY deaths DESC LIMIT 4")
+  fun loadLastFiveDeaths():LiveData<List<Statistic>>
 }

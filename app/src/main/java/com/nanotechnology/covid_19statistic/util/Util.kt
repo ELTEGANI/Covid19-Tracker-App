@@ -26,6 +26,12 @@ fun convertLongToDateString(systemTime: Long): String {
             .format(systemTime).toString()
 }
 
+@SuppressLint("SimpleDateFormat")
+fun convertLongToDate(systemTime: Long): String {
+    return SimpleDateFormat("MMM-dd' 'HH:mm")
+        .format(systemTime).toString()
+}
+
 
 
 @BindingAdapter(
