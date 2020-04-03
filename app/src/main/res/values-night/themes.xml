@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!--Final, top-level theme-->
+    <style name="Theme.Covid19.DayNight" parent="Theme.Covid19.Dark"/>
+
+    <style name="Theme.Covid19.Dark" parent="Theme.Covid19">
+        <!--Color-->
+        <item name="colorPrimary">@color/covid19_blue_200</item>
+        <item name="colorPrimaryVariant">@color/covid19_blue_300</item>
+        <item name="colorSecondary">@color/covid19_blue_300</item>
+        <item name="colorSecondaryVariant">@color/covid19_blue_300</item>
+
+        <item name="android:colorBackground">@color/covid19_black_900</item>
+        <item name="colorSurface">@color/covid19_black_800</item>
+        <item name="colorPrimarySurfaceVariant">?attr/colorSurface</item>
+        <item name="colorError">@color/covid19_red</item>
+
+        <item name="colorOnPrimary">@color/covid19_black_900</item>
+        <item name="colorOnSecondary">@color/covid19_black_900</item>
+        <item name="colorOnBackground">@color/covid19_white_50</item>
+        <item name="colorOnSurface">@color/covid19_white_50</item>
+        <item name="colorOnError">@color/covid19_black_900</item>
+
+        <item name="scrimBackground">@color/covid19_black_900_alpha_087</item>
+        <item name="android:statusBarColor">@color/covid19_black_900_alpha_060</item>
+
+        <item name="elevationOverlayEnabled">true</item>
+
+        <!--System/Platform attributes-->
+        <item name="android:windowLightStatusBar" tools:ignore="NewApi">false</item>
+    </style>
+</resources>
