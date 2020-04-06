@@ -12,267 +12,269 @@
             type="LiveData&lt;Resource&lt;Statistic>>" />
 
     </data>
-    <androidx.constraintlayout.widget.ConstraintLayout
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/nested_scroll_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginVertical="@dimen/grid_0_25"
-        android:layout_marginHorizontal="@dimen/grid_0_5"
-        tools:context=".ui.StatisticFragment"
+        android:fillViewport="true"
+        android:paddingHorizontal="@dimen/grid_0_5"
+        android:paddingTop="@dimen/grid_1"
+        android:clipToPadding="false"
+        android:background="?android:colorBackground"
         app:paddingTopSystemWindowInsets="@{true}"
-        app:paddingBottomSystemWindowInsets="@{true}"
         tools:targetApi="o">
 
-        <include
-            layout="@layout/loading_state"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="@dimen/grid_2"
-            android:layout_marginBottom="@dimen/grid_1"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0"
-            app:resource="@{(Resource) statisticResult}" />
+            android:paddingHorizontal="@dimen/grid_1"
+            app:paddingBottomSystemWindowInsets="@{true}">
 
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/cases_card_view"
-            android:layout_width="0dp"
-            android:layout_height="150dp"
-            android:layout_marginStart="@dimen/grid_2"
-            android:layout_marginTop="@dimen/grid_4"
-            android:layout_marginEnd="@dimen/grid_2"
-            android:clickable="true"
-            android:elevation="@dimen/plane_16"
-            android:focusable="true"
-            app:shapeAppearanceOverlay="@style/ShapeAppearance.Covid.MediumComponent"
-            app:cardPreventCornerOverlap="false"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.496"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <androidx.constraintlayout.widget.ConstraintLayout
+            <include
+                layout="@layout/loading_state"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingTop="@dimen/grid_2"
-                android:paddingBottom="@dimen/grid_2">
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="@dimen/grid_2"
+                android:layout_marginBottom="@dimen/grid_1"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0"
+                app:resource="@{(Resource) statisticResult}" />
 
-                <TextView
-                    android:id="@+id/cases_text_view"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/grid_2"
-                    android:layout_marginEnd="@dimen/grid_2"
-                    android:maxLines="1"
-                    android:text="@string/cases"
-                    android:textColor="@color/covid19_yellow"
-                    android:textAppearance="?attr/textAppearanceHeadline5"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <ImageView
-                    android:id="@+id/cases_logo_image_view"
-                    android:layout_width="@dimen/cases_image_size"
-                    android:layout_height="@dimen/cases_image_size"
-                    android:layout_marginStart="@dimen/grid_2"
-                    android:layout_marginTop="@dimen/grid_2"
-                    android:layout_marginBottom="@dimen/grid_2"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/cases_text_view"
-                    app:layout_constraintVertical_bias="0.053"
-                    app:srcCompat="@drawable/ic_cases" />
-
-                <TextView
-                    android:id="@+id/total_cases_text_view"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/grid_2"
-                    android:layout_marginTop="@dimen/grid_4"
-                    android:layout_marginEnd="@dimen/grid_2"
-                    android:textColor="@color/covid19_yellow"
-                    android:textAppearance="?attr/textAppearanceHeadline4"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="1.0"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/cases_text_view" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
-        </com.google.android.material.card.MaterialCardView>
-
-
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/recovery_card_view"
-            android:layout_width="0dp"
-            android:layout_height="150dp"
-            android:layout_marginStart="@dimen/grid_2"
-            android:layout_marginTop="@dimen/grid_1"
-            android:layout_marginEnd="@dimen/grid_2"
-            android:clickable="true"
-            android:elevation="@dimen/plane_16"
-            android:focusable="true"
-            app:cardPreventCornerOverlap="false"
-            app:shapeAppearanceOverlay="@style/ShapeAppearance.Covid.MediumComponent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.496"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/cases_card_view">
-
-            <androidx.constraintlayout.widget.ConstraintLayout
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cases_card_view"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingTop="@dimen/grid_2"
-                android:paddingBottom="@dimen/grid_2">
+                android:layout_marginStart="@dimen/grid_1"
+                android:layout_marginTop="@dimen/grid_4"
+                android:layout_marginEnd="@dimen/grid_1"
+                android:clickable="true"
+                android:elevation="@dimen/plane_16"
+                android:focusable="true"
+                app:shapeAppearanceOverlay="@style/ShapeAppearance.Covid.MediumComponent"
+                app:cardPreventCornerOverlap="false"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.496"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
-                <TextView
-                    android:id="@+id/recovery_text_view"
-                    android:layout_width="0dp"
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/grid_2"
-                    android:layout_marginEnd="@dimen/grid_2"
-                    android:maxLines="1"
-                    android:text="@string/recovery"
-                    android:textColor="@color/covid19_green"
-                    android:textAppearance="?attr/textAppearanceHeadline5"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    android:paddingTop="@dimen/grid_2"
+                    android:paddingBottom="@dimen/grid_2">
 
-                <ImageView
-                    android:id="@+id/recovery_logo_image_view"
-                    android:layout_width="@dimen/cases_image_size"
-                    android:layout_height="@dimen/cases_image_size"
-                    android:layout_marginStart="@dimen/grid_2"
-                    android:layout_marginTop="@dimen/grid_2"
-                    android:layout_marginBottom="@dimen/grid_2"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/recovery_text_view"
-                    app:layout_constraintVertical_bias="0.053"
-                    app:srcCompat="@drawable/ic_recovery" />
+                    <TextView
+                        android:id="@+id/cases_text_view"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/grid_2"
+                        android:layout_marginEnd="@dimen/grid_2"
+                        android:maxLines="1"
+                        android:text="@string/cases"
+                        android:textColor="@color/covid19_yellow"
+                        android:textAppearance="?attr/textAppearanceHeadline5"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
-                <TextView
-                    android:id="@+id/total_recoveries_text_view"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/grid_2"
-                    android:layout_marginTop="@dimen/grid_4"
-                    android:layout_marginEnd="@dimen/grid_2"
-                    android:textColor="@color/covid19_green"
-                    android:textAppearance="?attr/textAppearanceHeadline4"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="1.0"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/recovery_text_view" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
-        </com.google.android.material.card.MaterialCardView>
+                    <ImageView
+                        android:id="@+id/cases_logo_image_view"
+                        android:layout_width="@dimen/cases_image_size"
+                        android:layout_height="@dimen/cases_image_size"
+                        android:layout_marginStart="@dimen/grid_2"
+                        android:layout_marginTop="@dimen/grid_2"
+                        android:layout_marginBottom="@dimen/grid_2"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/cases_text_view"
+                        app:layout_constraintVertical_bias="0.053"
+                        app:srcCompat="@drawable/ic_cases" />
 
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/dead_card_view"
-            android:layout_width="0dp"
-            android:layout_height="150dp"
-            android:layout_marginStart="@dimen/grid_2"
-            android:layout_marginTop="@dimen/grid_1"
-            android:layout_marginEnd="@dimen/grid_2"
-            android:clickable="true"
-            android:elevation="@dimen/plane_16"
-            android:focusable="true"
-            app:cardPreventCornerOverlap="false"
-            app:shapeAppearanceOverlay="@style/ShapeAppearance.Covid.MediumComponent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.496"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/recovery_card_view">
+                    <TextView
+                        android:id="@+id/total_cases_text_view"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/grid_2"
+                        android:layout_marginTop="@dimen/grid_4"
+                        android:layout_marginEnd="@dimen/grid_2"
+                        android:textColor="@color/covid19_yellow"
+                        android:textAppearance="?attr/textAppearanceHeadline4"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="1.0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/cases_text_view" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </com.google.android.material.card.MaterialCardView>
 
-            <androidx.constraintlayout.widget.ConstraintLayout
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/recovery_card_view"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingTop="@dimen/grid_2"
-                android:paddingBottom="@dimen/grid_2">
+                android:layout_marginStart="@dimen/grid_1"
+                android:layout_marginTop="@dimen/grid_1"
+                android:layout_marginEnd="@dimen/grid_1"
+                android:clickable="true"
+                android:elevation="@dimen/plane_16"
+                android:focusable="true"
+                app:cardPreventCornerOverlap="false"
+                app:shapeAppearanceOverlay="@style/ShapeAppearance.Covid.MediumComponent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.496"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cases_card_view">
 
-                <TextView
-                    android:id="@+id/dead_text_view"
-                    android:layout_width="0dp"
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/grid_2"
-                    android:layout_marginEnd="@dimen/grid_2"
-                    android:maxLines="1"
-                    android:text="@string/deaths"
-                    android:textColor="@color/covid19_red"
-                    android:textAppearance="?attr/textAppearanceHeadline5"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    android:paddingTop="@dimen/grid_2"
+                    android:paddingBottom="@dimen/grid_2">
 
-                <ImageView
-                    android:id="@+id/dead_logo_image_view"
-                    android:layout_width="@dimen/cases_image_size"
-                    android:layout_height="@dimen/cases_image_size"
-                    android:layout_marginStart="@dimen/grid_2"
-                    android:layout_marginTop="@dimen/grid_2"
-                    android:layout_marginBottom="@dimen/grid_2"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/dead_text_view"
-                    app:layout_constraintVertical_bias="0.053"
-                    app:srcCompat="@drawable/ic_dead" />
+                    <TextView
+                        android:id="@+id/recovery_text_view"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/grid_2"
+                        android:layout_marginEnd="@dimen/grid_2"
+                        android:maxLines="1"
+                        android:text="@string/recovery"
+                        android:textColor="@color/covid19_green"
+                        android:textAppearance="?attr/textAppearanceHeadline5"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
-                <TextView
-                    android:id="@+id/total_dead_text_view"
-                    android:layout_width="wrap_content"
+                    <ImageView
+                        android:id="@+id/recovery_logo_image_view"
+                        android:layout_width="@dimen/cases_image_size"
+                        android:layout_height="@dimen/cases_image_size"
+                        android:layout_marginStart="@dimen/grid_2"
+                        android:layout_marginTop="@dimen/grid_2"
+                        android:layout_marginBottom="@dimen/grid_2"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/recovery_text_view"
+                        app:layout_constraintVertical_bias="0.053"
+                        app:srcCompat="@drawable/ic_recovery" />
+
+                    <TextView
+                        android:id="@+id/total_recoveries_text_view"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/grid_2"
+                        android:layout_marginTop="@dimen/grid_4"
+                        android:layout_marginEnd="@dimen/grid_2"
+                        android:textColor="@color/covid19_green"
+                        android:textAppearance="?attr/textAppearanceHeadline4"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="1.0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/recovery_text_view" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/dead_card_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/grid_1"
+                android:layout_marginTop="@dimen/grid_1"
+                android:layout_marginEnd="@dimen/grid_1"
+                android:clickable="true"
+                android:elevation="@dimen/plane_16"
+                android:focusable="true"
+                app:cardPreventCornerOverlap="false"
+                app:shapeAppearanceOverlay="@style/ShapeAppearance.Covid.MediumComponent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.496"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/recovery_card_view">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/grid_2"
-                    android:layout_marginTop="@dimen/grid_4"
-                    android:layout_marginEnd="@dimen/grid_2"
-                    android:textColor="@color/covid19_red"
-                    android:textAppearance="?attr/textAppearanceHeadline4"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="1.0"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/dead_text_view" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
-        </com.google.android.material.card.MaterialCardView>
+                    android:paddingTop="@dimen/grid_2"
+                    android:paddingBottom="@dimen/grid_2">
 
-        <TextView
-            android:id="@+id/last_update_text_view"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/grid_2"
-            android:layout_marginTop="@dimen/grid_2"
-            android:layout_marginEnd="@dimen/grid_2"
-            android:gravity="center"
-            android:autoSizeTextType="uniform"
-            android:textAppearance="?attr/textAppearanceBody1"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/dead_card_view" />
+                    <TextView
+                        android:id="@+id/dead_text_view"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/grid_2"
+                        android:layout_marginEnd="@dimen/grid_2"
+                        android:maxLines="1"
+                        android:text="@string/deaths"
+                        android:textColor="@color/covid19_red"
+                        android:textAppearance="?attr/textAppearanceHeadline5"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginBottom="168dp"
-            android:maxLines="4"
-            android:autoSizeTextType="uniform"
-            android:gravity="center"
-            android:text="@string/advices"
-            android:textAppearance="?attr/textAppearanceBody1"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/last_update_text_view"
-            app:layout_constraintVertical_bias="0.0" />
+                    <ImageView
+                        android:id="@+id/dead_logo_image_view"
+                        android:layout_width="@dimen/cases_image_size"
+                        android:layout_height="@dimen/cases_image_size"
+                        android:layout_marginStart="@dimen/grid_2"
+                        android:layout_marginTop="@dimen/grid_2"
+                        android:layout_marginBottom="@dimen/grid_2"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/dead_text_view"
+                        app:layout_constraintVertical_bias="0.053"
+                        app:srcCompat="@drawable/ic_dead" />
 
+                    <TextView
+                        android:id="@+id/total_dead_text_view"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/grid_2"
+                        android:layout_marginTop="@dimen/grid_4"
+                        android:layout_marginEnd="@dimen/grid_2"
+                        android:textColor="@color/covid19_red"
+                        android:textAppearance="?attr/textAppearanceHeadline4"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="1.0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/dead_text_view" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </com.google.android.material.card.MaterialCardView>
 
+            <TextView
+                android:id="@+id/last_update_text_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/grid_1"
+                android:gravity="center"
+                android:textAppearance="?attr/textAppearanceBody1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/dead_card_view" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/grid_1"
+                android:gravity="center"
+                android:text="@string/advices"
+                android:textAppearance="?attr/textAppearanceBody1"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/last_update_text_view"
+                app:layout_constraintVertical_bias="0.0" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
 
 
 </layout>
