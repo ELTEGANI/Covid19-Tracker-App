@@ -1,10 +1,10 @@
 ## About
 it loads all the data from this [NovelCOVID](https://github.com/NovelCOVID/API) thank you guys for the awesome work 😃😃.The app Provides features below
-- offline capable.
-- Clean and Simple Material UI.
+- Offline capable.
+- Simple Material UI.
 - It supports dark theme🌗.
-- pie chart for the last deaths per time.
-- share statistic(cases,recoveries and deaths).
+- Pie chart for the last deaths per time.
+- Share statistic(cases,recoveries and deaths).
 
 
 ## Screenshots
@@ -32,7 +32,7 @@ This app uses [***MVVM (Model View View-Model)***](https://developer.android.com
 ```
 MIT License
 
-Copyright (c) 2020
+Copyright (c) 2020 EL TEGANI MOHAMED HAMMAD GABIR
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
