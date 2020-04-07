@@ -1,16 +1,16 @@
 ## About
-it loads the all the data from this [NovelCOVID](https://github.com/NovelCOVID/API) NovelCovid/API Documentation can be found [here](https://corona.lmao.ninja/docs/) thank ou guys for the awesome work :) :).the app has
-- offline capable 😃.
+it loads all the data from this [NovelCOVID](https://github.com/NovelCOVID/API) NovelCovid/API Documentation can be found [here](https://corona.lmao.ninja/docs/) thank you guys for the awesome work 😃😃.The app Provides feature below
+- offline capable.
 - Clean and Simple Material UI.
-- It supports dark theme too 🌗.
+- It supports dark theme🌗.
 - pie chart for the last deaths per time.
 - share statistic(cases,recoveries and deaths).
 
 
 ## Screenshots
-<img src="screenshots/1_home.jpg" height="400" alt="Home screen"/>    <img src="screenshots/3_home_with_menu.jpg" height="400" alt="home screen with menu"/>  <img src="screenshots/4_pie_chart.jpg" height="400" alt="pie_chart_modal"/>
+<img src="screenshots/1_home.jpg" height="400" alt="Home screen"/>    <img src="screenshots/3_home_with_menu.jpg" height="400" alt="home screen with menu"/>  <img src="screenshots/4_pie_chart.jpg" height="400" alt="pie_chart_modal"/> <img src="screenshots/2_home_in_dark_theme.jpg" height="400" alt="home screen in dark theme"/> <img src="screenshots/5_pie_chart_in_dark_theme.jpg" height="400" alt="Pie Chart in dark theme"/>
 
-<img src="screenshots/2_home_in_dark_theme.jpg" height="400" alt="home screen in dark theme"/><img src="screenshots/5_pie_chart_in_dark_theme.jpg" height="400" alt="Pie Chart in dark theme"/>
+
 
 
 ## Built With 🛠
