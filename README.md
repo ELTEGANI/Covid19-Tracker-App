@@ -1,26 +1,23 @@
-**COVID-19 Tracker** is an android application built to track the last updates of the cases, recovery and deaths people during the COVID-19 pandemic that hit the whole world.
-
-***You can Install COVID-19 Tracker from below 👇***
-link to download
+**COVID-19 Tracker** is an android application built to demonstrate use of *Modern Android development* tools.
 
 
 ## About
-it loads the all the data from this api (api link) you can find the API docs Here(docs link) (thanks for their awesome work).the app features it has
-1- offline capable 😃.
-2- Clean and Simple Material UI.
-3- It supports dark theme too 🌗.
-4- pie chart for the last deaths per time.
-5- share statistic(cases,recoveries and deaths).
+it loads the all the data from this [NovelCOVID](https://github.com/NovelCOVID/API) NovelCovid/API Documentation can be found [here](https://corona.lmao.ninja/docs/) thank ou guys for the awesome work :) :).the app has
+- offline capable 😃.
+- Clean and Simple Material UI.
+- It supports dark theme too 🌗.
+- pie chart for the last deaths per time.
+- share statistic(cases,recoveries and deaths).
 
 
 ## Screenshots
-<img src="screenshots/1_home.jpg" height="400" alt="Home screen"/> <img src="screenshots/2_home_in_dark_theme.jpg" height="400" alt="home screen in dark theme"/> <img src="screenshots/3_home_with_menu.jpg" height="400" alt="home screen with menu"/>
+<img src="screenshots/1_home.jpg" height="400" alt="Home screen"/>    <img src="screenshots/3_home_with_menu.jpg" height="400" alt="home screen with menu"/>  <img src="screenshots/4_pie_chart.jpg" height="400" alt="pie_chart_modal"/>
 
-<img src="screenshots/4_pie_chart.jpg" height="400" alt="pie_chart_modal"/> <img src="screenshots/5_pie_chart_in_dark_theme.jpg" height="400" alt="Pie Chart in dark theme"/>
+<img src="screenshots/2_home_in_dark_theme.jpg" height="400" alt="home screen in dark theme"/><img src="screenshots/5_pie_chart_in_dark_theme.jpg" height="400" alt="Pie Chart in dark theme"/>
 
 
 ## Built With 🛠
-- [100% Kotlin](https://kotlinlang.org/) - First class and official programming language for Android development.
+- [100% Kotlin](https://kotlinlang.org/)
 - [Android Architecture Components](https://developer.android.com/topic/libraries/architecture)
   - [LiveData](https://developer.android.com/topic/libraries/architecture/livedata).
   - [ViewModel](https://developer.android.com/topic/libraries/architecture/viewmodel).
