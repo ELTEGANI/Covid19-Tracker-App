@@ -1,5 +1,5 @@
 ## About
-it loads all the data from this [NovelCOVID](https://github.com/NovelCOVID/API) NovelCovid/API Documentation can be found [here](https://corona.lmao.ninja/docs/) thank you guys for the awesome work 😃😃.The app Provides feature below
+it loads all the data from this [NovelCOVID](https://github.com/NovelCOVID/API) thank you guys for the awesome work 😃😃.The app Provides features below
 - offline capable.
 - Clean and Simple Material UI.
 - It supports dark theme🌗.
@@ -20,10 +20,8 @@ it loads all the data from this [NovelCOVID](https://github.com/NovelCOVID/API) 
   - [ViewModel](https://developer.android.com/topic/libraries/architecture/viewmodel).
   - [Room](https://developer.android.com/topic/libraries/architecture/room).
 - [Retrofit](https://square.github.io/retrofit/).
-- [JSON Converter]().
-- [MPAndroidChart]().
-- [Okhttp3]().
-- [Dagger 2]().
+- [MPAndroidChart](https://github.com/PhilJay/MPAndroidChart).
+- [Dagger 2](https://developer.android.com/training/dependency-injection/dagger-android).
 - [Material Components for Android](https://github.com/material-components/material-components-android)
 
 ## Architecture
