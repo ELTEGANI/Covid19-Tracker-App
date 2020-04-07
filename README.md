@@ -1,5 +1,5 @@
 ## About
-it loads all the data from this [NovelCOVID](https://github.com/NovelCOVID/API) thank you guys for the awesome work 😃😃.The app Provides features below
+Application loads all the data from this [NovelCOVID](https://github.com/NovelCOVID/API) thank you guys for the awesome work 😃😃.The app Provides features below
 - Offline capable.
 - Simple Material UI.
 - It supports dark theme🌗.
