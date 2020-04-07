@@ -1,6 +1,3 @@
-**COVID-19 Tracker** is an android application built to demonstrate use of *Modern Android development* tools.
-
-
 ## About
 it loads the all the data from this [NovelCOVID](https://github.com/NovelCOVID/API) NovelCovid/API Documentation can be found [here](https://corona.lmao.ninja/docs/) thank ou guys for the awesome work :) :).the app has
 - offline capable 😃.
