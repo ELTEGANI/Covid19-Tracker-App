@@ -1,6 +1,5 @@
 package com.nanotechnology.covid_19statistic.repositry
 
-import android.util.Log
 import androidx.annotation.MainThread
 import androidx.annotation.WorkerThread
 import androidx.lifecycle.LiveData

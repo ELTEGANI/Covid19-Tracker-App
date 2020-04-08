@@ -1,7 +1,6 @@
 package com.nanotechnology.covid_19statistic
 
 import android.app.Application
-import android.preference.PreferenceManager
 import com.nanotechnology.covid_19statistic.di.AppComponent
 import com.nanotechnology.covid_19statistic.di.DaggerAppComponent
 

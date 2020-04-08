@@ -39,7 +39,7 @@ class StatisticFragment : Fragment() {
         (activity!!.applicationContext as MyApplication).appComponent.inject(this)
     }
 
-    lateinit var binding: StatisticFragmentBinding
+    private lateinit var binding: StatisticFragmentBinding
 
     @SuppressLint("SetTextI18n")
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -49,12 +49,14 @@ class StatisticFragment : Fragment() {
 
         binding.statisticResult = statisticViewModel.statistic
 
-         statisticViewModel.statistic.observe(viewLifecycleOwner, Observer {
-             binding.totalCasesTextView.text = it.data?.cases.toString()
-             binding.totalDeadTextView.text = it.data?.deaths.toString()
-             binding.totalRecoveriesTextView.text = it.data?.recovered.toString()
-             binding.lastUpdateTextView.text = "Updated In"+" "+it.data?.updated?.let { it1 ->
-                 convertLongToDateString(it1)
+         statisticViewModel.statistic.observe(viewLifecycleOwner, Observer { statistics ->
+             if(statistics.data != null){
+                 binding.totalCasesTextView.text = statistics.data.cases.toString()
+                 binding.totalDeadTextView.text = statistics.data.deaths.toString()
+                 binding.totalRecoveriesTextView.text = statistics.data.recovered.toString()
+                 binding.lastUpdateTextView.text = getString(R.string.update_in)+" "+statistics.data.updated.let { it1 ->
+                     convertLongToDateString(it1)
+                 }
              }
          })
         setHasOptionsMenu(true)
@@ -80,9 +82,9 @@ class StatisticFragment : Fragment() {
                 val sendIntent: Intent = Intent().apply {
                     action = Intent.ACTION_SEND
                     putExtra(
-                        Intent.EXTRA_TEXT,"Cases Confirmed:"+binding.totalCasesTextView.text.toString()
-                                +"\n"+ "Recovery:"+binding.totalRecoveriesTextView.text.toString()
-                                +"\n"+ "Deaths:"+binding.totalDeadTextView.text.toString()
+                        Intent.EXTRA_TEXT,getString(R.string.cases_confirmed)+binding.totalCasesTextView.text.toString()
+                                +"\n"+ getString(R.string.recovery_cases)+binding.totalRecoveriesTextView.text.toString()
+                                +"\n"+ getString(R.string.deaths_cases)+binding.totalDeadTextView.text.toString()
                                 +"\n"+ binding.lastUpdateTextView.text.toString())
                     type = "text/plain"
                 }
@@ -104,15 +106,15 @@ class StatisticFragment : Fragment() {
     }
 
     private fun openDialogChart() {
-        val dailogBinding = DataBindingUtil
+        val dialogBinding = DataBindingUtil
         .inflate<ViewDataBinding>(LayoutInflater.from(context),R.layout.chart_bottom_sheet,null,false)
         val dialog = context?.let { BottomSheetDialog(it) }
-        dialog?.setContentView(dailogBinding.root.rootView)
+        dialog?.setContentView(dialogBinding.root.rootView)
         statisticViewModel.deathsAndUpdated.observe(viewLifecycleOwner, Observer {
             val entries: MutableList<PieEntry> = ArrayList()
             Collections.sort(entries, EntryXComparator())
-            for (i in it) {
-            entries.add(PieEntry(i.deaths.toFloat(), convertLongToDate(i.updated)))
+            it.data?.forEach { i ->
+                entries.add(PieEntry(i.deaths.toFloat(), convertLongToDate(i.updated)))
             }
             val pieDataSet = PieDataSet(entries, "")
             pieDataSet.setColors(
@@ -123,14 +125,13 @@ class StatisticFragment : Fragment() {
                     R.color.covid19_yellow
                 ), context
             )
-
             val pieData = PieData(pieDataSet)
-            val description: Description = dailogBinding.root.rootView.chart.description
+            val description: Description = dialogBinding.root.rootView.chart.description
             description.isEnabled = true
-            description.text = "Statistics Deaths Per Time"
+            description.text = getString(R.string.statistics_deaths_per_time)
             description.textSize = 16f
-            dailogBinding.root.rootView.chart.data = pieData
-            dailogBinding.root.rootView.chart.invalidate() // refresh
+            dialogBinding.root.rootView.chart.data = pieData
+            dialogBinding.root.rootView.chart.invalidate() // refresh
         })
         dialog?.show()
     }

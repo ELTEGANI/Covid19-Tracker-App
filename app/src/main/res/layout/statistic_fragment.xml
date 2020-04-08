@@ -93,7 +93,8 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/cases_text_view"
                         app:layout_constraintVertical_bias="0.053"
-                        app:srcCompat="@drawable/ic_cases" />
+                        app:srcCompat="@drawable/ic_cases"
+                        android:contentDescription="@string/cases_image_view" />
 
                     <TextView
                         android:id="@+id/total_cases_text_view"
@@ -160,7 +161,8 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/recovery_text_view"
                         app:layout_constraintVertical_bias="0.053"
-                        app:srcCompat="@drawable/ic_recovery" />
+                        app:srcCompat="@drawable/ic_recovery"
+                        android:contentDescription="@string/recovery_image_view" />
 
                     <TextView
                         android:id="@+id/total_recoveries_text_view"
@@ -226,7 +228,8 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/dead_text_view"
                         app:layout_constraintVertical_bias="0.053"
-                        app:srcCompat="@drawable/ic_dead" />
+                        app:srcCompat="@drawable/ic_dead"
+                        android:contentDescription="@string/deaths_image_view" />
 
                     <TextView
                         android:id="@+id/total_dead_text_view"
