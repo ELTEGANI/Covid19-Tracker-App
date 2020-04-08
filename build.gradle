@@ -16,7 +16,7 @@ buildscript {
         materialVersion = '1.2.0-alpha05'
         buildGradle = '3.5.3'
         gradlePlugin = '2.2.0-rc02'
-        version_room = '2.2.4'
+        version_room = '2.2.5'
         version_glide = '4.10.0'
         lifecycle_version = "2.2.0"
         version_glide_compiler = '4.10.0'
