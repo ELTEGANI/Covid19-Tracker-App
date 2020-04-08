@@ -1,4 +1,7 @@
 <resources>
 
+    <style name="actionOverflowButtonStyle" parent="@style/Widget.AppCompat.ActionButton.Overflow">
+        <item name="android:tint">@color/covid19_white_50</item>
+    </style>
 
 </resources>

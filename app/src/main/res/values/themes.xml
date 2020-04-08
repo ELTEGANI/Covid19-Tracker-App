@@ -5,6 +5,7 @@
     <style name="Theme.Covid19.DayNight" parent="Theme.Covid19"/>
 
     <style name="Theme.Covid19" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+        <item name="actionOverflowButtonStyle">@style/actionOverflowButtonStyle</item>
 
         <!--Color-->
         <item name="colorPrimary">@color/covid19_blue_700</item>
