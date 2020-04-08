@@ -26,6 +26,7 @@ COVID-19 Tracker loads all the data from this [NovelCOVID](https://github.com/No
 - [MPAndroidChart](https://github.com/PhilJay/MPAndroidChart).
 - [Dagger 2](https://developer.android.com/training/dependency-injection/dagger-android).
 - [Material Components for Android](https://github.com/material-components/material-components-android)
+- [R8](https://developer.android.com/studio/build/shrink-code)
 
 ## Architecture
 This app uses [***MVVM (Model View View-Model)***](https://developer.android.com/jetpack/docs/guide#recommended-app-arch) architecture.
