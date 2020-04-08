@@ -10,6 +10,9 @@ COVID-19 Tracker loads all the data from this [NovelCOVID](https://github.com/No
 ## Screenshots
 <img src="screenshots/1_home.jpg" height="400" alt="Home screen"/>    <img src="screenshots/3_home_with_menu.jpg" height="400" alt="home screen with menu"/>  <img src="screenshots/4_pie_chart.jpg" height="400" alt="pie_chart_modal"/> <img src="screenshots/2_home_in_dark_theme.jpg" height="400" alt="home screen in dark theme"/> <img src="screenshots/5_pie_chart_in_dark_theme.jpg" height="400" alt="Pie Chart in dark theme"/>
 
+***You can Install COVID-19 Tracker from below 👇***
+
+[![COVID-19 Tracker](https://img.shields.io/badge/Covid19-APK-green)]()
 
 
 
