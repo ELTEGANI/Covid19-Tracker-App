@@ -23,6 +23,7 @@ COVID-19 Tracker loads all the data from this [NovelCOVID](https://github.com/No
   - [ViewModel](https://developer.android.com/topic/libraries/architecture/viewmodel).
   - [Room](https://developer.android.com/topic/libraries/architecture/room).
 - [Retrofit](https://square.github.io/retrofit/).
+- [Data Binding](https://developer.android.com/topic/libraries/data-binding)
 - [MPAndroidChart](https://github.com/PhilJay/MPAndroidChart).
 - [Dagger 2](https://developer.android.com/training/dependency-injection/dagger-android).
 - [Material Components for Android](https://github.com/material-components/material-components-android)
