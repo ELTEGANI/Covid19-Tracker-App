@@ -22,7 +22,7 @@ import javax.inject.Singleton
     @Singleton
     fun provideRetrofit(client: OkHttpClient): Retrofit {
         return Retrofit.Builder()
-            .baseUrl("https://corona.lmao.ninja")
+            .baseUrl("https://corona.lmao.ninja/v2/")
             .client(client)
             .addConverterFactory(GsonConverterFactory.create())
             .addCallAdapterFactory(LiveDataCallAdapterFactory())
