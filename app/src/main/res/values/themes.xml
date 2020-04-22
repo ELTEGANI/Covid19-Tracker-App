@@ -6,23 +6,19 @@
 
     <style name="Theme.Covid19" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         <item name="actionOverflowButtonStyle">@style/actionOverflowButtonStyle</item>
-
         <!--Color-->
         <item name="colorPrimary">@color/covid19_blue_700</item>
         <item name="colorPrimaryVariant">@color/covid19_blue_800</item>
         <item name="colorSecondary">@color/covid19_blue_300</item>
-<!--        <item name="colorSecondaryVariant">@color/reply_orange_400</item>-->
 
         <item name="android:colorBackground">@color/covid19_blue_50</item>
         <item name="colorSurface">@color/covid19_white_50</item>
-
 
         <item name="colorOnPrimary">@color/covid19_white_50</item>
         <item name="colorOnSecondary">@color/covid19_black_900</item>
         <item name="colorOnBackground">@color/covid19_black_900</item>
         <item name="colorOnSurface">@color/covid19_black_900</item>
         <item name="colorOnError">@color/covid19_black_900</item>
-
 
         <item name="android:statusBarColor">@color/covid19_blue_700</item>
         <item name="scrimBackground">@color/covid19_white_50_alpha_060</item>
@@ -35,7 +31,6 @@
         <item name="textAppearanceHeadline5">@style/TextAppearance.Covid.Headline5</item>
         <item name="textAppearanceHeadline4">@style/TextAppearance.Covid.Headline4</item>
         <item name="textAppearanceBody1">@style/TextAppearance.Covid.Body1</item>
-
 
     </style>
 
