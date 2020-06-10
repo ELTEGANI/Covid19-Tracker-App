@@ -7,8 +7,6 @@ import android.view.WindowInsets
 import androidx.databinding.BindingAdapter
 import java.text.SimpleDateFormat
 
-
-
 /**
  * Take the Long milliseconds returned by the Covid-19 Api,
  * and convert it to a nicely formatted string for displaying.
@@ -30,8 +28,6 @@ fun convertLongToDate(systemTime: Long): String {
     return SimpleDateFormat("MMM-dd' 'HH:mm")
         .format(systemTime).toString()
 }
-
-
 
 @BindingAdapter(
     "paddingLeftSystemWindowInsets",

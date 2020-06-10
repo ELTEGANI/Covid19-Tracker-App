@@ -22,14 +22,12 @@ import com.nanotechnology.covid_19statistic.R
 import com.nanotechnology.covid_19statistic.databinding.StatisticFragmentBinding
 import com.nanotechnology.covid_19statistic.util.convertLongToDate
 import com.nanotechnology.covid_19statistic.util.convertLongToDateString
-import kotlinx.android.synthetic.main.chart_bottom_sheet.view.*
 import java.util.*
 import javax.inject.Inject
 import kotlin.collections.ArrayList
-
+import kotlinx.android.synthetic.main.chart_bottom_sheet.view.*
 
 class StatisticFragment : Fragment() {
-
 
     @Inject
     lateinit var statisticViewModel: StatisticViewModel
@@ -43,18 +41,18 @@ class StatisticFragment : Fragment() {
 
     @SuppressLint("SetTextI18n")
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        binding = DataBindingUtil.inflate(inflater,R.layout.statistic_fragment,container,false)
+        binding = DataBindingUtil.inflate(inflater, R.layout.statistic_fragment, container, false)
 
         binding.lifecycleOwner = this.viewLifecycleOwner
 
         binding.statisticResult = statisticViewModel.statistic
 
          statisticViewModel.statistic.observe(viewLifecycleOwner, Observer { statistics ->
-             if(statistics.data != null){
+             if (statistics.data != null) {
                  binding.totalCasesTextView.text = statistics.data.cases.toString()
                  binding.totalDeadTextView.text = statistics.data.deaths.toString()
                  binding.totalRecoveriesTextView.text = statistics.data.recovered.toString()
-                 binding.lastUpdateTextView.text = getString(R.string.update_in)+" "+statistics.data.updated.let { it1 ->
+                 binding.lastUpdateTextView.text = getString(R.string.update_in) + " " + statistics.data.updated.let { it1 ->
                      convertLongToDateString(it1)
                  }
              }
@@ -82,10 +80,10 @@ class StatisticFragment : Fragment() {
                 val sendIntent: Intent = Intent().apply {
                     action = Intent.ACTION_SEND
                     putExtra(
-                        Intent.EXTRA_TEXT,getString(R.string.cases_confirmed)+binding.totalCasesTextView.text.toString()
-                                +"\n"+ getString(R.string.recovery_cases)+binding.totalRecoveriesTextView.text.toString()
-                                +"\n"+ getString(R.string.deaths_cases)+binding.totalDeadTextView.text.toString()
-                                +"\n"+ binding.lastUpdateTextView.text.toString())
+                        Intent.EXTRA_TEXT, getString(R.string.cases_confirmed) + binding.totalCasesTextView.text.toString() +
+                                "\n" + getString(R.string.recovery_cases) + binding.totalRecoveriesTextView.text.toString() +
+                                "\n" + getString(R.string.deaths_cases) + binding.totalDeadTextView.text.toString() +
+                                "\n" + binding.lastUpdateTextView.text.toString())
                     type = "text/plain"
                 }
                 val shareIntent = Intent.createChooser(sendIntent, null)
@@ -107,7 +105,7 @@ class StatisticFragment : Fragment() {
 
     private fun openDialogChart() {
         val dialogBinding = DataBindingUtil
-        .inflate<ViewDataBinding>(LayoutInflater.from(context),R.layout.chart_bottom_sheet,null,false)
+        .inflate<ViewDataBinding>(LayoutInflater.from(context), R.layout.chart_bottom_sheet, null, false)
         val dialog = context?.let { BottomSheetDialog(it) }
         dialog?.setContentView(dialogBinding.root.rootView)
         statisticViewModel.deathsAndUpdated.observe(viewLifecycleOwner, Observer {

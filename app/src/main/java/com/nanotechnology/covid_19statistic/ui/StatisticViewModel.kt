@@ -7,12 +7,9 @@ import com.nanotechnology.covid_19statistic.vo.Resource
 import com.nanotechnology.covid_19statistic.vo.Statistic
 import javax.inject.Inject
 
+class StatisticViewModel @Inject constructor(statisticRepository: StatisticRepository) : ViewModel() {
 
-class StatisticViewModel @Inject constructor(statisticRepository: StatisticRepository): ViewModel() {
+    val statistic: LiveData<Resource<Statistic>> = statisticRepository.retrieveAllStatistics()
 
-
-    val statistic : LiveData<Resource<Statistic>>  = statisticRepository.retrieveAllStatistics()
-
-    val deathsAndUpdated : LiveData<Resource<List<Statistic>>> = statisticRepository.loadDeathsAndUpdatedTime()
-
+    val deathsAndUpdated: LiveData<Resource<List<Statistic>>> = statisticRepository.loadDeathsAndUpdatedTime()
 }

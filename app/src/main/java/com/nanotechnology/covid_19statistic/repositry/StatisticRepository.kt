@@ -12,43 +12,42 @@ import com.nanotechnology.covid_19statistic.vo.Statistic
 import javax.inject.Inject
 import javax.inject.Singleton
 
-
 @Singleton
 class StatisticRepository @Inject constructor(
-   private val appExecutors: AppExecutors,
-   private val covidService: Covid19Service,
-   private val statisticDao: StatisticDao){
+    private val appExecutors: AppExecutors,
+    private val covidService: Covid19Service,
+    private val statisticDao: StatisticDao
+) {
 
-   fun retrieveAllStatistics(): LiveData<Resource<Statistic>> {
-      return object : NetworkBoundResource<Statistic,Statistic>(appExecutors) {
-         override fun saveCallResult(item: Statistic) {
-             statisticDao.insert(item)
-         }
+    fun retrieveAllStatistics(): LiveData<Resource<Statistic>> {
+        return object : NetworkBoundResource<Statistic, Statistic>(appExecutors) {
+           override fun saveCallResult(item: Statistic) {
+              statisticDao.insert(item)
+              }
 
-         override fun shouldFetch(data: Statistic?) : Boolean = true
+           override fun shouldFetch(data: Statistic?): Boolean = true
 
-         override fun loadFromDb(): LiveData<Statistic> {
-           return statisticDao.loadStatistic()
-         }
+           override fun loadFromDb(): LiveData<Statistic> {
+              return statisticDao.loadStatistic()
+              }
 
-         override fun createCall(): LiveData<ApiResponse<Statistic>> = covidService.getGlobalStatistic()
+           override fun createCall(): LiveData<ApiResponse<Statistic>> = covidService.getGlobalStatistic()
 
-         override fun processResponse(response: ApiSuccessResponse<Statistic>)
-                 : Statistic {
-            return response.body
-         }
-
-      }.asLiveData()
-   }
-
-  fun loadDeathsAndUpdatedTime():LiveData<Resource<List<Statistic>>>{
-     val data = MediatorLiveData<Resource<List<Statistic>>>()
-     data.value = Resource.loading(null)
-     data.addSource(statisticDao.loadLastFiveDeaths()){
-        if(it != null){
-           data.value = Resource.success(it)
+           override fun processResponse(response: ApiSuccessResponse<Statistic>):
+              Statistic {
+              return response.body
+              }
+           }.asLiveData()
         }
-     }
-     return  data
-  }
+
+    fun loadDeathsAndUpdatedTime(): LiveData<Resource<List<Statistic>>> {
+        val data = MediatorLiveData<Resource<List<Statistic>>>()
+        data.value = Resource.loading(null)
+        data.addSource(statisticDao.loadLastFiveDeaths()) {
+          if (it != null) {
+             data.value = Resource.success(it)
+             }
+          }
+        return data
+        }
 }
