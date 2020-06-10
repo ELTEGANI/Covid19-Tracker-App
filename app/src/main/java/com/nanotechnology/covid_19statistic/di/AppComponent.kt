@@ -6,10 +6,9 @@ import dagger.BindsInstance
 import dagger.Component
 import javax.inject.Singleton
 
-
 @Singleton
 @Component(modules = [ApplicationModule::class])
-interface AppComponent{
+interface AppComponent {
     // Factory to create instances of the AppComponent
     @Component.Factory
     interface Factory {
@@ -18,5 +17,3 @@ interface AppComponent{
     }
     fun inject(fragment: StatisticFragment)
 }
-
-

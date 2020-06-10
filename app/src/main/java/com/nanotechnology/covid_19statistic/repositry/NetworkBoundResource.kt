@@ -11,13 +11,11 @@ import com.nanotechnology.covid_19statistic.api.ApiResponse
 import com.nanotechnology.covid_19statistic.api.ApiSuccessResponse
 import com.nanotechnology.covid_19statistic.vo.Resource
 
-
 // ResultType: Type for the Resource data.
 // RequestType: Type for the API response.
 abstract class NetworkBoundResource<ResultType, RequestType>@MainThread constructor(private val appExecutors: AppExecutors) {
 
     private val result = MediatorLiveData<Resource<ResultType>>()
-
 
     init {
         result.value = Resource.loading(null)
@@ -101,5 +99,4 @@ abstract class NetworkBoundResource<ResultType, RequestType>@MainThread construc
     // Called to create the API call.
     @MainThread
     protected abstract fun createCall(): LiveData<ApiResponse<RequestType>>
-
 }

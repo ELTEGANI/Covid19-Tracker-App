@@ -2,7 +2,6 @@ package com.nanotechnology.covid_19statistic.api
 
 import retrofit2.Response
 
-
 sealed class ApiResponse<T> {
     companion object {
         fun <T> create(error: Throwable): ApiErrorResponse<T> {
