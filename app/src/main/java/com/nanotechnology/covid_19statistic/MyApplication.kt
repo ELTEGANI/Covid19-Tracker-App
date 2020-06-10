@@ -4,7 +4,6 @@ import android.app.Application
 import com.nanotechnology.covid_19statistic.di.AppComponent
 import com.nanotechnology.covid_19statistic.di.DaggerAppComponent
 
-
 open class MyApplication : Application() {
 
     // Instance of the AppComponent that will be used by all the Activities in the project

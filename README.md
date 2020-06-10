@@ -12,7 +12,7 @@ COVID-19 Tracker loads all the data from this [NovelCOVID](https://github.com/No
 
 ***You can Install COVID-19 Tracker from below 👇***
 
-[![COVID-19 Tracker](https://img.shields.io/badge/Covid19-APK-green)](https://raw.githubusercontent.com/Tiganimohammad/Covid-19-Statistic-App/master/apk/Covid19%20Tracker.apk)
+[![COVID-19 Tracker](https://img.shields.io/badge/Covid19-APK-green)](https://raw.githubusercontent.com/Tiganimohammad/Covid-19-Statistic-App/master/apk/covid19.apk)
 
 
 
