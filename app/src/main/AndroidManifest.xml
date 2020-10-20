@@ -3,7 +3,7 @@
     package="com.nanotechnology.covid_19statistic">
 <uses-permission android:name="android.permission.INTERNET"/>
     <application
-        android:name=".MyApplication"
+        android:name=".Covid19App"
         android:allowBackup="true"
         android:fullBackupContent="@xml/backup_descriptor"
         android:icon="@mipmap/ic_launcher"

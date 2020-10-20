@@ -1,4 +1,4 @@
-package com.nanotechnology.covid_19statistic.vo
+package com.nanotechnology.covid_19statistic.db
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity

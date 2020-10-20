@@ -1,7 +1,6 @@
 package com.nanotechnology.covid_19statistic.ui
 
 import android.annotation.SuppressLint
-import android.content.Context
 import android.content.Intent
 import android.content.res.Configuration
 import android.os.Bundle
@@ -10,6 +9,7 @@ import androidx.appcompat.app.AppCompatDelegate
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import com.github.mikephil.charting.components.Description
 import com.github.mikephil.charting.data.PieData
@@ -17,50 +17,46 @@ import com.github.mikephil.charting.data.PieDataSet
 import com.github.mikephil.charting.data.PieEntry
 import com.github.mikephil.charting.utils.EntryXComparator
 import com.google.android.material.bottomsheet.BottomSheetDialog
-import com.nanotechnology.covid_19statistic.MyApplication
 import com.nanotechnology.covid_19statistic.R
 import com.nanotechnology.covid_19statistic.databinding.StatisticFragmentBinding
 import com.nanotechnology.covid_19statistic.util.convertLongToDate
 import com.nanotechnology.covid_19statistic.util.convertLongToDateString
+import dagger.hilt.android.AndroidEntryPoint
 import java.util.*
-import javax.inject.Inject
 import kotlin.collections.ArrayList
 import kotlinx.android.synthetic.main.chart_bottom_sheet.view.*
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 
+@AndroidEntryPoint
 class StatisticFragment : Fragment() {
 
-    @Inject
-    lateinit var statisticViewModel: StatisticViewModel
-
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-        (activity!!.applicationContext as MyApplication).appComponent.inject(this)
-    }
+    @ExperimentalCoroutinesApi
+    private val statisticViewModel:StatisticViewModel by viewModels()
 
     private lateinit var binding: StatisticFragmentBinding
 
+    @ExperimentalCoroutinesApi
     @SuppressLint("SetTextI18n")
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.statistic_fragment, container, false)
 
         binding.lifecycleOwner = this.viewLifecycleOwner
 
-        binding.statisticResult = statisticViewModel.statistic
-
-         statisticViewModel.statistic.observe(viewLifecycleOwner, Observer { statistics ->
-             if (statistics.data != null) {
-                 binding.totalCasesTextView.text = statistics.data.cases.toString()
-                 binding.totalDeadTextView.text = statistics.data.deaths.toString()
-                 binding.totalRecoveriesTextView.text = statistics.data.recovered.toString()
-                 binding.lastUpdateTextView.text = getString(R.string.update_in) + " " + statistics.data.updated.let { it1 ->
-                     convertLongToDateString(it1)
-                 }
+        statisticViewModel.statistic.observe(viewLifecycleOwner, { statistics ->
+             if (statistics != null) {
+                 binding.totalCasesTextView.text = statistics.cases.toString()
+                 binding.totalDeadTextView.text = statistics.deaths.toString()
+                 binding.totalRecoveriesTextView.text = statistics.recovered.toString()
+                 binding.lastUpdateTextView.text = getString(R.string.update_in) + " " + convertLongToDateString(
+                     statistics.updated
+                 )
              }
          })
         setHasOptionsMenu(true)
         return binding.root
     }
 
+    @ExperimentalCoroutinesApi
     override fun onOptionsItemSelected(item: MenuItem) =
         when (item.itemId) {
             R.id.menu_dark_mode -> {
@@ -103,6 +99,7 @@ class StatisticFragment : Fragment() {
         inflater.inflate(R.menu.statistic_menu, menu)
     }
 
+    @ExperimentalCoroutinesApi
     private fun openDialogChart() {
         val dialogBinding = DataBindingUtil
         .inflate<ViewDataBinding>(LayoutInflater.from(context), R.layout.chart_bottom_sheet, null, false)
@@ -111,7 +108,7 @@ class StatisticFragment : Fragment() {
         statisticViewModel.deathsAndUpdated.observe(viewLifecycleOwner, Observer {
             val entries: MutableList<PieEntry> = ArrayList()
             Collections.sort(entries, EntryXComparator())
-            it.data?.forEach { i ->
+            it.forEach { i ->
                 entries.add(PieEntry(i.deaths.toFloat(), convertLongToDate(i.updated)))
             }
             val pieDataSet = PieDataSet(entries, "")

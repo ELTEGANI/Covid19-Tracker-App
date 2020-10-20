@@ -6,20 +6,22 @@ apply plugin: 'kotlin-android-extensions'
 
 apply plugin: 'kotlin-kapt'
 
+apply plugin: 'dagger.hilt.android.plugin'
+
 
 android {
-    compileSdkVersion 29
+    compileSdkVersion 30
     buildToolsVersion "29.0.3"
     defaultConfig {
         applicationId "com.nanotechnology.covid_19statistic"
         minSdkVersion 21
-        targetSdkVersion 29
+        targetSdkVersion 30
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         javaCompileOptions {
             annotationProcessorOptions {
-                arguments = [
+                arguments += [
                         "room.incremental": "true"
                 ]
             }
@@ -44,16 +46,21 @@ android {
         targetCompatibility = 1.8
     }
 
-        kotlinOptions {
-            jvmTarget = "1.8"
-        }
+    kotlinOptions {
+        // work-runtime-ktx 2.1.0 and above now requires Java 8
+        jvmTarget = "1.8"
+
+        // Enable Coroutines and Flow APIs
+        freeCompilerArgs += "-Xopt-in=kotlinx.coroutines.ExperimentalCoroutinesApi"
+        freeCompilerArgs += "-Xopt-in=kotlinx.coroutines.FlowPreview"
+    }
 
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'androidx.appcompat:appcompat:1.2.0'
     // Support libraries
     implementation "androidx.constraintlayout:constraintlayout:$version_constraint_layout"
     // JSON Converter
@@ -62,13 +69,17 @@ dependencies {
     implementation "com.squareup.retrofit2:retrofit:$version_retrofit"
     //Android KTX
     implementation "androidx.core:core-ktx:$version_core"
+
+    implementation "androidx.lifecycle:lifecycle-extensions:$version_lifecycle_extensions"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0"
+
     //Navigation
     implementation "android.arch.navigation:navigation-fragment-ktx:$version_navigation"
     implementation "android.arch.navigation:navigation-ui-ktx:$version_navigation"
     //implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation "androidx.constraintlayout:constraintlayout:$constraintlayout"
-    testImplementation 'junit:junit:4.13'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+    testImplementation 'junit:junit:4.13.1'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation "androidx.test.espresso:espresso-core:$espresso"
     androidTestImplementation "androidx.test.espresso:espresso-contrib:$espresso"
     testImplementation "org.hamcrest:hamcrest:$hamcrest"
@@ -81,9 +92,16 @@ dependencies {
     implementation "androidx.room:room-runtime:$version_room"
     kapt "androidx.room:room-compiler:$version_room"
     implementation "androidx.room:room-ktx:$version_room"
-    //dagger2
-    implementation "com.google.dagger:dagger:$dagger_version"
-    kapt "com.google.dagger:dagger-compiler:$dagger_version"
+
+    implementation "android.arch.lifecycle:extensions:1.1.1"
+    implementation "androidx.fragment:fragment-ktx:1.2.5"
+
+    //dagger:hilt
+    implementation "com.google.dagger:hilt-android:2.28.3-alpha"
+    kapt "com.google.dagger:hilt-android-compiler:2.28.3-alpha"
+    implementation 'androidx.hilt:hilt-lifecycle-viewmodel:1.0.0-alpha02'
+    // When using Kotlin.
+    kapt 'androidx.hilt:hilt-compiler:1.0.0-alpha02'
     // ViewModel
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
     // LiveData
@@ -96,5 +114,11 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-common-java8:$lifecycle_version"
     //MPAndroidChart
     implementation "com.github.PhilJay:MPAndroidChart:$MPAndroidChart"
+    //Retrofit Coroutines Support
+    implementation "com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:$version_retrofit_coroutines_adapter"
+    implementation "com.squareup.retrofit2:retrofit:$version_retrofit"
+    // RETROFIT .. CONVERTER
+    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
+
 
 }
