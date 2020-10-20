@@ -3,15 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <data>
-        <import type="com.nanotechnology.covid_19statistic.vo.Resource" />
-        <import type="androidx.lifecycle.LiveData"/>
-        <import type="com.nanotechnology.covid_19statistic.vo.Statistic"/>
-        <variable
-            name="statisticResult"
-            type="LiveData&lt;Resource&lt;Statistic>>" />
-
-    </data>
 
     <androidx.core.widget.NestedScrollView
         android:id="@+id/nested_scroll_view"
@@ -31,19 +22,6 @@
             android:paddingHorizontal="@dimen/grid_1"
             app:paddingBottomSystemWindowInsets="@{true}">
 
-            <include
-                layout="@layout/loading_state"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginEnd="@dimen/grid_2"
-                android:layout_marginBottom="@dimen/grid_1"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.0"
-                app:resource="@{(Resource) statisticResult}" />
 
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/cases_card_view"
