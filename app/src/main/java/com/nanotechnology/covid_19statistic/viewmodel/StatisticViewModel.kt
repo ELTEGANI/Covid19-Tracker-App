@@ -6,7 +6,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.nanotechnology.covid_19statistic.LocalStorage
+import com.nanotechnology.covid_19statistic.datastore.LocalStorage
 import com.nanotechnology.covid_19statistic.db.Statistic
 import com.nanotechnology.covid_19statistic.repositry.StatisticRepository
 import kotlinx.coroutines.Dispatchers.IO
