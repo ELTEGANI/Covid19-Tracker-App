@@ -1,26 +1,27 @@
-package com.nanotechnology.covid_19statistic.ui
+package com.nanotechnology.covid_19statistic.viewmodel
 
 import android.util.Log
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.nanotechnology.covid_19statistic.db.Statistic
-import com.nanotechnology.covid_19statistic.db.StatisticDao
 import com.nanotechnology.covid_19statistic.repositry.StatisticRepository
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.InternalCoroutinesApi
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.onCompletion
 import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.launch
 import okio.IOException
-import retrofit2.HttpException
 
 @ExperimentalCoroutinesApi
 class StatisticViewModel @ViewModelInject constructor(var statisticRepository: StatisticRepository) : ViewModel() {
 
+    private val _progressBar = MutableLiveData<Boolean>(false)
+    val progressBar: LiveData<Boolean>
+        get() = _progressBar
 
     init {
         viewModelScope.launch {
@@ -37,14 +38,14 @@ class StatisticViewModel @ViewModelInject constructor(var statisticRepository: S
     fun getAllCovid19Statistics() {
         viewModelScope.launch {
             statisticRepository.getStatistics()
-                .onStart { }
-                .onCompletion { }
+                .onStart { _progressBar.value = true}
+                .onCompletion {_progressBar.value = false }
                 .catch {
                     if (it is IOException) {
                         Log.d("io", it.toString())
                     }
-                }.collect {
-                    statisticRepository.insertAllStatistics(it)
+                }.collect {covid19Statistics->
+                    statisticRepository.insertAllStatistics(covid19Statistics)
             }
         }
     }

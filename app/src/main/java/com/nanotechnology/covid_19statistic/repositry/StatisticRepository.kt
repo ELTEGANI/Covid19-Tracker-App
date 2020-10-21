@@ -34,7 +34,7 @@ private var statisticDao : StatisticDao) {
         return statisticDao.loadLastFiveDeaths()
     }
 
-    suspend fun insertAllStatistics(statistic: Statistic){
+    fun insertAllStatistics(statistic: Statistic){
         statisticDao.insert(statistic)
     }
 }

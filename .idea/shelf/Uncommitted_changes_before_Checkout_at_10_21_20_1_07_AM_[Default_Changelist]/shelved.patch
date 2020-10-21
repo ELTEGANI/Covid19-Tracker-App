@@ -1,0 +1,18 @@
+Index: app/src/main/java/com/nanotechnology/covid_19statistic/repositry/StatisticRepository.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.nanotechnology.covid_19statistic.repositry\n\nimport androidx.lifecycle.LiveData\nimport com.nanotechnology.covid_19statistic.api.Covid19Service\nimport com.nanotechnology.covid_19statistic.db.Statistic\nimport com.nanotechnology.covid_19statistic.db.StatisticDao\nimport kotlinx.coroutines.Dispatchers\nimport kotlinx.coroutines.ExperimentalCoroutinesApi\nimport kotlinx.coroutines.flow.Flow\nimport kotlinx.coroutines.flow.flow\nimport kotlinx.coroutines.flow.flowOn\nimport javax.inject.Inject\nimport javax.inject.Singleton\n\n\n\n@Singleton\nclass StatisticRepository @Inject constructor(private val covidService:Covid19Service,\nprivate var statisticDao : StatisticDao) {\n\n    @ExperimentalCoroutinesApi\n    fun getStatistics(): Flow<Statistic> {\n        return flow {\n            val statisticResponse = covidService.getGlobalStatistic()\n            emit(statisticResponse)\n        }.flowOn(Dispatchers.IO)\n    }\n\n    fun retrieveAllStatistics(): LiveData<Statistic> {\n        return statisticDao.loadStatistic()\n    }\n\n    fun loadDeathsAndUpdatedTime(): LiveData<List<Statistic>> {\n        return statisticDao.loadLastFiveDeaths()\n    }\n\n    suspend fun insertAllStatistics(statistic: Statistic){\n        statisticDao.insert(statistic)\n    }\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/com/nanotechnology/covid_19statistic/repositry/StatisticRepository.kt	(revision a76b01f91fe91a17d4146d133e7af78a3120f24f)
++++ app/src/main/java/com/nanotechnology/covid_19statistic/repositry/StatisticRepository.kt	(date 1603234728000)
+@@ -34,7 +34,7 @@
+         return statisticDao.loadLastFiveDeaths()
+     }
+ 
+-    suspend fun insertAllStatistics(statistic: Statistic){
++    fun insertAllStatistics(statistic: Statistic){
+         statisticDao.insert(statistic)
+     }
+ }
