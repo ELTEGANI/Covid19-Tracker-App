@@ -28,7 +28,7 @@ COVID-19 Tracker loads all the data from this [NovelCOVID](https://github.com/No
 - [Dependency injection with Hilt](https://developer.android.com/training/dependency-injection/hilt-android).
 - [Flow](https://kotlinlang.org/docs/reference/coroutines/flow.html).
 - [Kotlin coroutines on Android](https://developer.android.com/kotlin/coroutines)
-- [Material Components for Android](https://github.com/material-components/material-components-android)
+- [android material design](https://material.io/develop/android/)
 - [R8](https://developer.android.com/studio/build/shrink-code)
 
 ## Architecture
