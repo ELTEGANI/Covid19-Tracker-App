@@ -21,6 +21,7 @@ import com.nanotechnology.covid_19statistic.R
 import com.nanotechnology.covid_19statistic.databinding.StatisticFragmentBinding
 import com.nanotechnology.covid_19statistic.util.convertLongToDate
 import com.nanotechnology.covid_19statistic.util.convertLongToDateString
+import com.nanotechnology.covid_19statistic.viewmodel.StatisticViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import java.util.*
 import kotlin.collections.ArrayList
@@ -31,7 +32,7 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 class StatisticFragment : Fragment() {
 
     @ExperimentalCoroutinesApi
-    private val statisticViewModel:StatisticViewModel by viewModels()
+    private val statisticViewModel: StatisticViewModel by viewModels()
 
     private lateinit var binding: StatisticFragmentBinding
 
@@ -41,6 +42,10 @@ class StatisticFragment : Fragment() {
         binding = DataBindingUtil.inflate(inflater, R.layout.statistic_fragment, container, false)
 
         binding.lifecycleOwner = this.viewLifecycleOwner
+
+        statisticViewModel.progressBar.observe(viewLifecycleOwner) { show ->
+            binding.progressBar.visibility = if (show) View.VISIBLE else View.GONE
+        }
 
         statisticViewModel.statistic.observe(viewLifecycleOwner, { statistics ->
              if (statistics != null) {
@@ -52,6 +57,8 @@ class StatisticFragment : Fragment() {
                  )
              }
          })
+
+
         setHasOptionsMenu(true)
         return binding.root
     }
