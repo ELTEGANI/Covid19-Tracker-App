@@ -30,7 +30,7 @@ COVID-19 Tracker loads all the data from this [NovelCOVID](https://github.com/No
 - [Kotlin coroutines on Android](https://developer.android.com/kotlin/coroutines)
 - [android material design](https://material.io/develop/android/)
 - [R8](https://developer.android.com/studio/build/shrink-code)
-- [Android Store](https://developer.android.com/topic/libraries/architecture/datastore)
+- [Jetpack DataStore](https://developer.android.com/topic/libraries/architecture/datastore)
 
 ## Architecture
 This app uses [***MVVM (Model View View-Model)***](https://developer.android.com/jetpack/docs/guide#recommended-app-arch) architecture.
