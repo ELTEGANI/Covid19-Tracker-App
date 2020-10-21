@@ -2,7 +2,6 @@ package com.nanotechnology.covid_19statistic.ui
 
 import android.annotation.SuppressLint
 import android.content.Intent
-import android.content.res.Configuration
 import android.os.Bundle
 import android.view.*
 import androidx.appcompat.app.AppCompatDelegate
@@ -11,6 +10,7 @@ import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.lifecycle.lifecycleScope
 import com.github.mikephil.charting.components.Description
 import com.github.mikephil.charting.data.PieData
 import com.github.mikephil.charting.data.PieDataSet
@@ -27,6 +27,8 @@ import java.util.*
 import kotlin.collections.ArrayList
 import kotlinx.android.synthetic.main.chart_bottom_sheet.view.*
 import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class StatisticFragment : Fragment() {
@@ -66,16 +68,9 @@ class StatisticFragment : Fragment() {
     @ExperimentalCoroutinesApi
     override fun onOptionsItemSelected(item: MenuItem) =
         when (item.itemId) {
-            R.id.menu_dark_mode -> {
-                // Get new mode.
-                val mode = if ((resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK) ==
-                             Configuration.UI_MODE_NIGHT_NO) {
-                    AppCompatDelegate.MODE_NIGHT_YES
-                } else {
-                    AppCompatDelegate.MODE_NIGHT_AUTO_BATTERY
-                }
-                // Change UI Mode
-                AppCompatDelegate.setDefaultNightMode(mode)
+            R.id.action_night_mode -> {
+                item.isChecked = !item.isChecked
+                setUIMode(item, item.isChecked)
                 true
             }
 
@@ -104,6 +99,13 @@ class StatisticFragment : Fragment() {
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.statistic_menu, menu)
+        // Set the item state
+        lifecycleScope.launch {
+            val isChecked = statisticViewModel.readDataStore.first()
+            val item = menu.findItem(R.id.action_night_mode)
+            item.isChecked = isChecked
+            setUIMode(item, isChecked)
+        }
     }
 
     @ExperimentalCoroutinesApi
@@ -137,4 +139,19 @@ class StatisticFragment : Fragment() {
         })
         dialog?.show()
     }
+
+    private fun setUIMode(item: MenuItem, isChecked: Boolean) {
+        if (isChecked) {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+            statisticViewModel.saveToDataStore(true)
+            item.setIcon(R.drawable.ic_night)
+
+        } else {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+            statisticViewModel.saveToDataStore(false)
+            item.setIcon(R.drawable.ic_day)
+
+        }
+    }
+
 }
