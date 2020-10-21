@@ -7,8 +7,23 @@ COVID-19 Tracker loads all the data from this [NovelCOVID](https://github.com/No
 - Share statistic(cases,recoveries and deaths).
 
 
-## Screenshots
-<img src="screenshots/1_home.jpg" height="400" alt="Home screen"/>    <img src="screenshots/3_home_with_menu.jpg" height="400" alt="home screen with menu"/>  <img src="screenshots/4_pie_chart.jpg" height="400" alt="pie_chart_modal"/> <img src="screenshots/2_home_in_dark_theme.jpg" height="400" alt="home screen in dark theme"/> <img src="screenshots/5_pie_chart_in_dark_theme.jpg" height="400" alt="Pie Chart in dark theme"/>
+## Light Mode Screenshots
+<table align="center">
+        <tr>
+          <td><img src = "app/screenshots/1_L.jpg" ></td>
+          <td><img src = "app/screenshots/2_L.jpg" ></td>
+          <td><img src = "app/screenshots/3_L.jpg" ></td>
+        </tr>
+</table> 
+
+## Night Mode Screenshots
+<table align="center">
+        <tr>
+          <td><img src = "app/screenshots/1_D.jpg" ></td>
+          <td><img src = "app/screenshots/2_D.jpg" ></td>
+          <td><img src = "app/screenshots/3_D.jpg" ></td>
+        </tr>
+</table> 
 
 ***You can Install COVID-19 Tracker from below 👇***
 
