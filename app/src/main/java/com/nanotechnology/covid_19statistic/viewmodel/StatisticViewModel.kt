@@ -6,8 +6,10 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.nanotechnology.covid_19statistic.LocalStorage
 import com.nanotechnology.covid_19statistic.db.Statistic
 import com.nanotechnology.covid_19statistic.repositry.StatisticRepository
+import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.collect
@@ -17,7 +19,7 @@ import kotlinx.coroutines.launch
 import okio.IOException
 
 @ExperimentalCoroutinesApi
-class StatisticViewModel @ViewModelInject constructor(var statisticRepository: StatisticRepository) : ViewModel() {
+class StatisticViewModel @ViewModelInject constructor(var statisticRepository: StatisticRepository,var localStorage: LocalStorage) : ViewModel() {
 
     private val _progressBar = MutableLiveData<Boolean>(false)
     val progressBar: LiveData<Boolean>
@@ -50,4 +52,13 @@ class StatisticViewModel @ViewModelInject constructor(var statisticRepository: S
         }
     }
 
+    // Save to DataStore
+    fun saveToDataStore(isNightMode: Boolean) {
+        viewModelScope.launch(IO) {
+            localStorage.saveToDataStore(isNightMode)
+        }
+    }
+
+    // Get From DataStore
+    val readDataStore = localStorage.uiMode
 }

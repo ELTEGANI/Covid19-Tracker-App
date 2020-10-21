@@ -10,8 +10,8 @@
         android:title="@string/share_statistics"
         app:showAsAction="never" />
     <item
-        android:id="@+id/menu_dark_mode"
+        android:id="@+id/action_night_mode"
         android:title="@string/dark_mode"
-        android:icon="@drawable/ic_moon"
+        android:icon="@drawable/ic_day"
         app:showAsAction="ifRoom"/>
 </menu>
